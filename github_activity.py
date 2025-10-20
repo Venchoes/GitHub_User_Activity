@@ -7,13 +7,13 @@ def github_fetch(username):
     url = f"https://api.github.com/users/{username}/events"
 
     try:
-        response = request.get(url)
+        response = requests.get(url)
 
         if response.status_code == 404:
             print(f"Error: User '{username}' not found")
             return None
         elif response.status_code != 200:
-            print(f"Error: Unable to fetch data (Status code: {response.status.code})")
+            print(f"Error: Unable to fetch data (Status code: {response.status_code})")
             return None
         
         return response.json()
